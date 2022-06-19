@@ -37,7 +37,6 @@ module.exports = {
           ["Stone Charges", stncharges, "Dia Charges", diamondcharges, "Polki Charges", polkicharges],
           ["Mozz Charges", mozzcharges, "Kundan Charges", kundancharges, "Adv Amt", advamount],
           ["Adv Gold", advgold, "Ad Gold Purity", advgoldtype],
-          ["Remarks", remakrks]
         ];
       } else if (role.toLowerCase() === 'operator') {
         head = [
@@ -49,7 +48,6 @@ module.exports = {
           ["Stone Charges", stncharges, "Dia Charges", diamondcharges, "Polki Charges", polkicharges],
           ["Mozz Charges", mozzcharges, "Kundan Charges", kundancharges, "Adv Amt", advamount],
           ["Adv Gold", advgold, "Ad Gold Purity", advgoldtype],
-          ["Remarks", remakrks]
         ];
       } else if (role.toLowerCase() === 'supplier') {
         head = [
@@ -57,12 +55,10 @@ module.exports = {
           [ "Delivery Date", delDate, "Stamp", stamp, "Melting", melting],
           [ "Order Type", ortype, "Priority", priority, "Branch", branch],
           ["Order Wt", ordWt, "Created By", createdby, "Passed By", approvedby],
-          ["Remarks", remakrks]
         ];
       }
 
       doc.autoTable({
-        // head: columnsItem,
         body: head,
         bodyStyles: { minCellHeight: 10, fontSize: 10, lineColor: [0, 0, 0], halign: 'center', valign: 'middle', fontStyle: 'normal', },
         headStyles: {
@@ -87,6 +83,33 @@ module.exports = {
           0: { fontStyle: 'bold' },
           2: { fontStyle: 'bold' },
           4: { fontStyle: 'bold' }
+        }
+      });
+
+      finalY = doc.lastAutoTable.finalY + 0
+      doc.autoTable({
+        body: [["Remarks", remakrks]],
+        bodyStyles: { minCellHeight: 10, fontSize: 10, lineColor: [0, 0, 0], halign: 'center', valign: 'middle', fontStyle: 'normal', },
+        headStyles: {
+          lineColor: [0, 0, 0],
+          fillColor: [192, 192, 192],
+          textColor: 0,
+          fontSize: 10,
+          fontStyle: 'normal',
+          lineWidth: 0.2,
+          halign: 'center',
+          valign: 'middle'
+        },
+        startY: finalY,
+        rowStyles: {
+          0: { cellWidth: 10 },
+          1: { "overflow": "linebreak" },
+        },
+        rowPageBreak: 'avoid',
+        theme: 'grid',
+        tableLineColor: [0, 0, 0],
+        columnStyles: {
+          0: { fontStyle: 'bold', cellWidth : 32 },
         }
       });
 
