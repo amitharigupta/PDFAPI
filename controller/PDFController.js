@@ -24,7 +24,7 @@ module.exports = {
       let finalY = pageHeight * 0.05;
       doc.setFontSize(10);
       doc.text(`Order No: ${orderNo}`, 10, finalY, 'left');
-      doc.text('Order Form', pageWidth / 2, finalY, 'center');
+      // doc.text('Order Form', pageWidth / 2, finalY, 'center');
       doc.text(`Cust Name: ${custName}`, pageWidth - 50, finalY)
       let head = []
       if (role.toLowerCase() === 'admin') {
@@ -92,11 +92,12 @@ module.exports = {
 
       // Adding image
       doc.addPage()
+      pageWidth = doc.internal.pageSize.getWidth();
       pageHeight = doc.internal.pageSize.getHeight();
       doc.text(`Order No: ${orderNo}`, 10, pageHeight * 0.05 ,'left' )
-      doc.text(`Order Form`, pageWidth / 2, pageHeight * 0.05, 'center')
+      // doc.text(`Order Form`, pageWidth / 2, pageHeight * 0.05, 'center')
       doc.text(`Cust Name: ${custName}`, pageWidth - 50, pageHeight * 0.05 )
-      doc.addImage(imagedate, "JPEG", 0, pageHeight * 0.09);
+      doc.addImage(imagedate, "JPEG", 10, pageHeight * 0.09, pageWidth * 0.9, pageHeight * 0.75);
       // Adding Item table
 
       let itemColumns = [["Weight", "Pcs", "Size", "Rhoduim", "Screw", "Earings", "Remarks"]];
@@ -115,7 +116,7 @@ module.exports = {
           halign: 'center',
           valign: 'middle'
         },
-        startY: pageHeight - 50,
+        startY: pageHeight * 0.88,
         columnStyles: {
           0: { cellWidth: "auto" },
           1: { "overflow": "linebreak", cellWidth: "auto", },
