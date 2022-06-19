@@ -80,7 +80,7 @@ module.exports = {
         theme: 'grid',
         tableLineColor: [0, 0, 0],
         columnStyles: {
-          0: { fontStyle: 'bold' },
+          0: { fontStyle: 'bold',  cellWidth : 32 },
           2: { fontStyle: 'bold' },
           4: { fontStyle: 'bold' }
         }
