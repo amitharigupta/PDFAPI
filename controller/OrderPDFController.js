@@ -74,7 +74,7 @@ module.exports = {
       finalY = doc.previousAutoTable.finalY + 15
 
       for (let i = 0; i < images.length; i++) {
-        doc.addImage(images[i].data, "JPEG", pageWidth / 6, finalY, 150, 100)
+        doc.addImage(images[i], "JPEG", pageWidth / 6, finalY, 150, 100)
         finalY = finalY * 5
         if (finalY > 300 && i < images.length - 1) {
           doc.addPage()
